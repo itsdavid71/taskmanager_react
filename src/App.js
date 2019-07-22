@@ -52,7 +52,7 @@ class App extends React.Component{
                                     {store != 0 ? store.map(val=>
                                         <li className="task-block">{val.taskValue}
                                             <div onClick={(e)=>this.deleteClick(e)} className="delete">Удалить</div>
-                                            <div className="task-date">Выполнить до: <span id="date-value">{val.date}</span></div>
+                                            <div className="task-date">Выполнить до: <span id="date-value">{val.date}</span></div> 
                                         </li>
                                     ) : "Задач нет."} 
                                 </ol>
