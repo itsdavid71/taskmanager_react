@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    border: 0;
+}
+
+body {
+    background: black;
+}
+.container {
+    max-width: 1000px;
+    margin: 0 auto  ;
+}
+.background {
+    background: url("/bg.jpg") center center / cover no-repeat;
+    min-height: 100vh;
+}
+.bg-black {
+    background: rgba(6, 16, 31, 0.95);
+    min-height: 100vh;
+}
+h1, h2, h4 {
+    color: #fff;
+}
+h4 {
+    font-weight: normal;
+    margin: 20px 0 5px 0;
+}
+input[type=date] {
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    font-size: 16px;
+}
+h1 {
+    font-size: 48px;
+    text-align: center;
+    color: #fff;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+h2 {
+    padding: 20px 0;
+}
+textarea {
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 100px;
+    max-height: 200px;
+    box-sizing: border-box;
+    padding: 10px;
+    transition: .3s;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid white;
+    &:focus {
+        background: rgba(36, 36, 36, 0.6);
+        outline: none;
+        box-shadow: 1px 2px 30px rgba(255, 255, 255, 0.2);
+    }
+}
+.buttonSubmit {
+    display: block;
+    padding: 15px;
+    width: 400px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.task-block {
+    background: #fff;
+    padding: 20px 30px;
+    transition: .2s;
+    position: relative;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 300px ;
+    li {
+        color: black;
+    }
+    &:hover {
+        box-shadow: 1px 2px 30px rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+}
+.delete {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    top: 7px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+.task-date {
+    font-size: 10px;
+    margin-top: 20px;
+}
+
+ol {
+    color: white;
+    width: 300px;
+    li {
+        color: #000;
+    }
+}
