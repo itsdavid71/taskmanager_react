@@ -22,6 +22,10 @@ const store = createStore(function(state=[], action){
         });
 
         return myState;
+    } else if( action.type == 'SORT_TASK' ){
+        const task = [...state];
+        console.log(task);
+        return task.sort();
     }
 
     return state;

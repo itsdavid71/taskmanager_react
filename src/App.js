@@ -8,7 +8,8 @@ class App extends React.Component{
         super(props);
         this.state=({
             isSubmit: false,
-            check: true
+            check: true,
+            date: new Date().toLocaleString()
         });
     };
 
@@ -23,13 +24,11 @@ class App extends React.Component{
         });
 
         let inputValue = e.target.querySelector('textarea').value;
-        let dateValue = e.target.querySelector('input').value;
-        
-        let date1 = new Date;
-
+        let deadline = e.target.querySelector('input').value;
+        let date = this.state.date;
         let id = Math.ceil(Math.random()*10000);
 
-        let dateSpan = document.getElementById("date-value");        
+        // let dateSpan = document.getElementById("date-value");        
         if(inputValue == "") {
             this.setState({
                 isSubmit: !this.state.isSubmit,
@@ -39,15 +38,20 @@ class App extends React.Component{
             });
             
         }  else {
-            this.props.addTask(id, inputValue, dateValue);
+            this.props.addTask(id, inputValue, date, deadline);
             e.target.querySelector('textarea').value = '';
-            e.target.querySelector('input').value = '';
+            // e.target.querySelector('input').value = '';
             this.setState({
                 check: false,
                 isSubmit: !this.state.isSubmit
             }); 
         }
         
+    }
+
+    sortTask(e) {
+        this.props.sortTask();
+        console.log(1);
     }
 
     deleteClick(e){
@@ -89,6 +93,7 @@ class App extends React.Component{
                                 </form>
                                 <div>
                                     <h2>Список задач</h2>
+                                    <div className="sort-date" onClick={(e)=>this.sortTask(e)}>Сортировать по дате</div>
                                     <ol>
                                         {store != 0 ? store.map(val=>
                                             <li className="task-block">
@@ -96,7 +101,9 @@ class App extends React.Component{
                                                 <div className="delete">
                                                     <input type="hidden" value={val.id} id="task-id"></input><span onClick={(e)=>this.deleteClick(e)}>Удалить</span>
                                                 </div>
-                                                <div className="task-date">Выполнить до: <span id="date-value">{val.date}</span></div> 
+                                                <div className="task-date">Дата создания: <span id="date-value">{val.date != 0  ? val.date :  "не указан" }</span></div>
+                                                <div className="date-icon"></div> 
+                                                <div className="task-deadline">Дедлайн: <span id="date-deadline">{val.deadline != 0  ? val.deadline :  "не указан" }</span></div> 
                                             </li>
                                         ) : "Задач нет."} 
                                     </ol>
@@ -116,13 +123,14 @@ export default connect(
         testStore:state
     }),
     dispatch=>({
-        addTask:(id, taskValue, date)=>{
+        addTask:(id, taskValue, date, deadline)=>{
             dispatch({
                 type: 'ADD_TASK',
                 data: {
                     id,
                     taskValue,
-                    date
+                    date,
+                    deadline
                 }
             })
         },
@@ -130,6 +138,11 @@ export default connect(
             dispatch({
                 type:'DELETE_TASK',
                 name: id
+            })
+        },
+        sortTask:()=>{
+            dispatch({
+                type: 'SORT_TASK'
             })
         }
     })
