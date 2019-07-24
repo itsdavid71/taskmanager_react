@@ -27,6 +27,8 @@ class App extends React.Component{
         
         let date1 = new Date;
 
+        let id = Math.ceil(Math.random()*10000);
+
         let dateSpan = document.getElementById("date-value");        
         if(inputValue == "") {
             this.setState({
@@ -37,7 +39,7 @@ class App extends React.Component{
             });
             
         }  else {
-            this.props.addTask(inputValue, dateValue);
+            this.props.addTask(id, inputValue, dateValue);
             e.target.querySelector('textarea').value = '';
             e.target.querySelector('input').value = '';
             this.setState({
@@ -49,7 +51,10 @@ class App extends React.Component{
     }
 
     deleteClick(e){
-        this.props.deleteTask(e.target.getElementsByClassName('task-block'));
+        let input = e.target;
+        let id = input.closest('.delete').querySelector('input');
+        let value = id.value;
+        this.props.deleteTask(value);
     }
   
 
@@ -59,8 +64,6 @@ class App extends React.Component{
         let isSubmit = this.state.isSubmit;
         let check = this.state.check;
         let check2 = this.state.check2;
-        console.log( isSubmit);
-        console.log(check);
         return(
             <CSSTransition in={check == true ? check2  : isSubmit} timeout={100} classNames={check == true ? "check-block" : "popup-block"}>
 
@@ -88,8 +91,11 @@ class App extends React.Component{
                                     <h2>Список задач</h2>
                                     <ol>
                                         {store != 0 ? store.map(val=>
-                                            <li className="task-block">{val.taskValue}
-                                                <div onClick={(e)=>this.deleteClick(e)} className="delete">Удалить</div>
+                                            <li className="task-block">
+                                                <span>{val.taskValue}</span>
+                                                <div className="delete">
+                                                    <input type="hidden" value={val.id} id="task-id"></input><span onClick={(e)=>this.deleteClick(e)}>Удалить</span>
+                                                </div>
                                                 <div className="task-date">Выполнить до: <span id="date-value">{val.date}</span></div> 
                                             </li>
                                         ) : "Задач нет."} 
@@ -110,19 +116,20 @@ export default connect(
         testStore:state
     }),
     dispatch=>({
-        addTask:(taskValue, date)=>{
+        addTask:(id, taskValue, date)=>{
             dispatch({
                 type: 'ADD_TASK',
                 data: {
+                    id,
                     taskValue,
                     date
                 }
             })
         },
-        deleteTask:(taskValue)=>{
+        deleteTask:(id)=>{
             dispatch({
                 type:'DELETE_TASK',
-                name: taskValue
+                name: id
             })
         }
     })

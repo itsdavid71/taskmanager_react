@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import {BrowserRouter, Route} from 'react-router-dom';
 
 const store = createStore(function(state=[], action){
     if( action.type == 'ADD_TASK' ){
@@ -12,10 +14,9 @@ const store = createStore(function(state=[], action){
         ];
     }else if( action.type == 'DELETE_TASK' ){
         const myState = [...state];
-        console.log(myState);
 
         myState.forEach((stateItem, stateKey)=>{
-            if( stateItem == action.name ){
+            if( stateItem.id == action.name ){
                 myState.splice(stateKey, 1);
             }
         });
