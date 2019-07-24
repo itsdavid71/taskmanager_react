@@ -38,6 +38,8 @@ class App extends React.Component{
             
         }  else {
             this.props.addTask(inputValue, dateValue);
+            e.target.querySelector('textarea').value = '';
+            e.target.querySelector('input').value = '';
             this.setState({
                 check: false,
                 isSubmit: !this.state.isSubmit
