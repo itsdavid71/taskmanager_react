@@ -1,0 +1,66 @@
+
+input[type=date] {
+    padding: 10px;
+    margin: 5px 0;
+    transition: .3s;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    background: transparent;
+    color: #fff;
+    border: 1px solid white;
+    &:focus {
+        outline: none;
+        box-shadow: 1px 2px 30px rgba(255, 255, 255, 0.2);
+    }
+}
+
+textarea {
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 100px;
+    max-height: 200px;
+    box-sizing: border-box;
+    padding: 15px;
+    font-weight: 300;
+    transition: .3s;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid white;
+    &:focus {
+        // background: rgba(21, 19, 41, 0.6);
+        outline: none;
+        box-shadow: 1px 2px 30px rgba(255, 255, 255, 0.2);
+    }
+}
+.buttonSubmit {
+    display: block;
+    padding: 15px;
+    width: 400px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.priority-block {
+    display: flex;
+    color: white;
+    margin: 5px 0 20px 0;
+    padding: 10px;
+    align-items: center;
+    max-width: 145px;
+    border: 1px solid white;
+    transition: .2s;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+        background: #fff;
+        color: black;
+    }
+    p {
+        margin-left: 10px;
+        font-size: 14px;
+        font-weight: 300;
+    }
+}

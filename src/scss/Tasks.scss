@@ -1,0 +1,88 @@
+.task-block {
+    background: #fff;
+    padding: 20px;
+    transition: .2s;
+    position: relative;
+    border-radius: 5px;
+    margin: 10px 0 40px 0;
+    // overflow: hidden;
+    width: 300px ;
+    li {
+        color: black;
+    }
+    &:hover {
+        box-shadow: 1px 2px 30px rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+}
+.priority {
+    box-shadow: -1px 1px 20px 8px rgba(255, 217, 0, 0.2);
+    &:hover {
+        box-shadow: -1px 1px 20px 8px rgba(255, 217, 0, 0.35);
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        height: 10px;
+        width: 100%;
+        left: 0;
+        margin: 0 auto;
+        bottom: 0;
+        background: gold;
+    }
+}
+#task-id {
+    display: none;
+}
+.delete {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 10px;
+    top: 7px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+ol {
+    color: white;
+    width: 300px;
+    li {
+        color: #000;
+    }
+}
+.sort-date {
+    font-size: 14px;
+    font-weight: 300;
+    border: 1px solid white;
+    padding: 7px;
+    margin: 20px 0;
+    color: white;
+    display: inline;
+    cursor: pointer;
+    transition: .2s;
+    &:hover {
+        background: #fff;
+        color: #000
+    }
+}
+ol {
+    margin-top: 20px;
+}
+.task-date {
+    font-size: 14px;
+    margin-top: 20px;
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    font-weight: 300;
+    /* left: 0; */
+    color: #fff;
+}
+.task-deadline {
+    font-size: 10px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+    
